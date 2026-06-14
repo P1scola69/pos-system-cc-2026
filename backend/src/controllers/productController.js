@@ -1,4 +1,5 @@
 const pool = require('../config/database');
+const { uploadImage } = require('../config/blobStorage');
 
 // TODO: Agregar validación de inputs con express-validator (ya instalado)
 // TODO: Sanitizar datos antes de insertarlos
@@ -51,7 +52,7 @@ const create = async (req, res) => {
   try {
     const { nombre, descripcion, precio, stock, categoria_id } = req.body;
     // TODO: Validar que precio >= 0, stock >= 0, nombre no vacío, categoria_id exista
-    const imagen_url = req.file ? `/uploads/${req.file.filename}` : null;
+    const imagen_url = req.file ? await uploadImage(req.file) : null;
 
     const result = await pool.query(
       `INSERT INTO productos (nombre, descripcion, precio, stock, categoria_id, imagen_url)
@@ -68,7 +69,7 @@ const update = async (req, res) => {
   try {
     const { id } = req.params;
     const { nombre, descripcion, precio, stock, categoria_id, activo } = req.body;
-    const imagen_url = req.file ? `/uploads/${req.file.filename}` : undefined;
+    const imagen_url = req.file ? await uploadImage(req.file) : undefined;
 
     const fields = [];
     const values = [];
