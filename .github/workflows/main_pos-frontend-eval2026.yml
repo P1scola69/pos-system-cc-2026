@@ -31,7 +31,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: frontend 
+          path: frontend # ARREGLO 1: Subimos solo la carpeta del frontend, no todo el repositorio.
 
   deploy:
     runs-on: ubuntu-latest
