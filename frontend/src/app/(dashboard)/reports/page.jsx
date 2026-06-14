@@ -30,7 +30,7 @@ export default function ReportsPage() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-gray-900">Reportes</h1>
+        <h1 className="text-2xl font-bold text-white">Reportes</h1>
         <select className="input w-36" value={days} onChange={(e) => setDays(e.target.value)}>
           <option value={7}>Últimos 7 días</option>
           <option value={30}>Últimos 30 días</option>
@@ -40,7 +40,7 @@ export default function ReportsPage() {
 
       {/* Ventas por día */}
       <div className="card">
-        <h2 className="font-semibold text-gray-900 mb-4">Ingresos por día (CLP)</h2>
+        <h2 className="font-semibold text-white mb-4">Ingresos por día (CLP)</h2>
         {salesByDay.length === 0
           ? <p className="text-center text-gray-400 py-10">Sin datos para el período seleccionado</p>
           : (
@@ -59,7 +59,7 @@ export default function ReportsPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Top productos */}
         <div className="card">
-          <h2 className="font-semibold text-gray-900 mb-4">Productos más vendidos (unidades)</h2>
+          <h2 className="font-semibold text-white mb-4">Productos más vendidos (unidades)</h2>
           {topProducts.length === 0
             ? <p className="text-center text-gray-400 py-10">Sin datos</p>
             : (
@@ -77,7 +77,7 @@ export default function ReportsPage() {
 
         {/* Por método de pago */}
         <div className="card">
-          <h2 className="font-semibold text-gray-900 mb-4">Ventas por método de pago</h2>
+          <h2 className="font-semibold text-white mb-4">Ventas por método de pago</h2>
           {byPayment.length === 0
             ? <p className="text-center text-gray-400 py-10">Sin datos</p>
             : (

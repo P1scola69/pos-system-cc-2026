@@ -31,7 +31,7 @@ function ScoreRing({ pct }) {
 
 function CategoryCard({ name, data }) {
   const [open, setOpen] = useState(true);
-  const c = CATEGORY_COLORS[name] || { bg: 'bg-gray-50', border: 'border-gray-200', title: 'text-gray-800', badge: 'bg-gray-100 text-gray-700' };
+  const c = CATEGORY_COLORS[name] || { bg: 'bg-gray-900', border: 'border-gray-200', title: '', badge: 'bg-gray-100 text-gray-400' };
   const catPct = Math.round((data.pts / data.maxPts) * 100);
 
   return (
@@ -55,12 +55,12 @@ function CategoryCard({ name, data }) {
       {open && (
         <div className="border-t border-gray-200 divide-y divide-gray-100">
           {data.items.map((item, i) => (
-            <div key={i} className="px-5 py-3 flex items-start gap-3 bg-white/70">
+            <div key={i} className="px-5 py-3 flex items-start gap-3 bg-gray-800/70">
               <span className={`mt-0.5 text-lg leading-none ${item.pass ? 'text-green-500' : 'text-red-400'}`}>
                 {item.pass ? '✓' : '✗'}
               </span>
               <div className="flex-1 min-w-0">
-                <p className={`text-sm font-medium ${item.pass ? 'text-gray-900' : 'text-gray-500'}`}>
+                <p className={`text-sm font-medium ${item.pass ? 'text-white' : 'text-gray-500'}`}>
                   {item.name}
                 </p>
                 <p className="text-xs text-gray-400 mt-0.5 font-mono break-all">{item.detail}</p>
@@ -113,7 +113,7 @@ export default function EvalPage() {
 
         {/* Header */}
         <div className="text-center pt-4">
-          <p className="text-xs font-mono uppercase tracking-widest text-indigo-400 mb-1">
+          <p className="text-xs font-mono uppercase tracking-widest text-emerald-400 mb-1">
             Evaluación de Módulo — Cloud Computing
           </p>
           <h1 className="text-3xl font-black text-white">Panel de Evaluación Docente</h1>
@@ -134,7 +134,7 @@ export default function EvalPage() {
                 placeholder="https://backend.equipo.example.com"
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
-                className="w-full bg-gray-900 border border-gray-600 rounded-lg px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full bg-gray-900 border border-gray-600 rounded-lg px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500"
               />
             </div>
             <div>
@@ -145,7 +145,7 @@ export default function EvalPage() {
                 placeholder="••••••••••••"
                 value={key}
                 onChange={(e) => setKey(e.target.value)}
-                className="w-full bg-gray-900 border border-gray-600 rounded-lg px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full bg-gray-900 border border-gray-600 rounded-lg px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500"
               />
             </div>
           </div>
@@ -157,7 +157,7 @@ export default function EvalPage() {
           <button
             type="submit"
             disabled={loading}
-            className="bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white font-semibold py-2 px-6 rounded-lg transition-colors text-sm"
+            className="bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 text-white font-semibold py-2 px-6 rounded-lg transition-colors text-sm"
           >
             {loading ? 'Evaluando...' : 'Evaluar sistema'}
           </button>

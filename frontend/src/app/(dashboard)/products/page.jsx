@@ -60,7 +60,7 @@ export default function ProductsPage() {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-gray-900">Productos</h1>
+        <h1 className="text-2xl font-bold text-white">Productos</h1>
         <button onClick={openCreate} className="btn-primary">+ Nuevo producto</button>
       </div>
 
@@ -76,7 +76,7 @@ export default function ProductsPage() {
 
       <div className="card p-0 overflow-hidden">
         <table className="w-full">
-          <thead className="bg-gray-50 border-b border-gray-200">
+          <thead className="bg-gray-900 border-b border-gray-200">
             <tr>
               <th className="table-header">Nombre</th>
               <th className="table-header">Categoría</th>
@@ -91,7 +91,7 @@ export default function ProductsPage() {
               <tr><td colSpan={6} className="table-cell text-center text-gray-400 py-8">Sin productos</td></tr>
             )}
             {products.map((p) => (
-              <tr key={p.id} className="hover:bg-gray-50">
+              <tr key={p.id} className="hover:bg-gray-900">
                 <td className="table-cell font-medium">{p.nombre}</td>
                 <td className="table-cell text-gray-500">{p.categoria_nombre || '—'}</td>
                 <td className="table-cell font-semibold">{formatCLP(p.precio)}</td>
@@ -105,7 +105,7 @@ export default function ProductsPage() {
                 </td>
                 <td className="table-cell">
                   <div className="flex gap-2">
-                    <button onClick={() => openEdit(p)} className="text-indigo-600 hover:underline text-sm">Editar</button>
+                    <button onClick={() => openEdit(p)} className="text-emerald-600 hover:underline text-sm">Editar</button>
                     <button onClick={() => handleDelete(p.id)} className="text-red-500 hover:underline text-sm">Eliminar</button>
                   </div>
                 </td>
@@ -118,36 +118,36 @@ export default function ProductsPage() {
       {/* Modal */}
       {modal && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl shadow-xl w-full max-w-md p-6">
+          <div className="bg-gray-800 rounded-2xl shadow-xl w-full max-w-md p-6">
             <h2 className="text-lg font-bold mb-4">{modal === 'create' ? 'Nuevo Producto' : 'Editar Producto'}</h2>
             <form onSubmit={handleSubmit} className="space-y-3">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Nombre *</label>
+                <label className="block text-sm font-medium text-gray-400 mb-1">Nombre *</label>
                 <input required className="input" value={form.nombre} onChange={(e) => setForm({ ...form, nombre: e.target.value })} />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Descripción</label>
+                <label className="block text-sm font-medium text-gray-400 mb-1">Descripción</label>
                 <textarea className="input" rows={2} value={form.descripcion} onChange={(e) => setForm({ ...form, descripcion: e.target.value })} />
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Precio (CLP) *</label>
+                  <label className="block text-sm font-medium text-gray-400 mb-1">Precio (CLP) *</label>
                   <input required type="number" min="0" className="input" value={form.precio} onChange={(e) => setForm({ ...form, precio: e.target.value })} />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Stock</label>
+                  <label className="block text-sm font-medium text-gray-400 mb-1">Stock</label>
                   <input type="number" min="0" className="input" value={form.stock} onChange={(e) => setForm({ ...form, stock: e.target.value })} />
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Categoría</label>
+                <label className="block text-sm font-medium text-gray-400 mb-1">Categoría</label>
                 <select className="input" value={form.categoria_id} onChange={(e) => setForm({ ...form, categoria_id: e.target.value })}>
                   <option value="">Sin categoría</option>
                   {categories.map((c) => <option key={c.id} value={c.id}>{c.nombre}</option>)}
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Imagen</label>
+                <label className="block text-sm font-medium text-gray-400 mb-1">Imagen</label>
                 <input type="file" accept="image/*" className="text-sm text-gray-600"
                   onChange={(e) => setForm({ ...form, imagen: e.target.files[0] })} />
               </div>

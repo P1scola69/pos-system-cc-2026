@@ -38,13 +38,13 @@ export default function CategoriesPage() {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-gray-900">Categorías</h1>
+        <h1 className="text-2xl font-bold text-white">Categorías</h1>
         <button onClick={openCreate} className="btn-primary">+ Nueva categoría</button>
       </div>
 
       <div className="card p-0 overflow-hidden">
         <table className="w-full">
-          <thead className="bg-gray-50 border-b border-gray-200">
+          <thead className="bg-gray-900 border-b border-gray-200">
             <tr>
               <th className="table-header">Nombre</th>
               <th className="table-header">Descripción</th>
@@ -56,12 +56,12 @@ export default function CategoriesPage() {
               <tr><td colSpan={3} className="table-cell text-center text-gray-400 py-8">Sin categorías</td></tr>
             )}
             {categories.map((c) => (
-              <tr key={c.id} className="hover:bg-gray-50">
+              <tr key={c.id} className="hover:bg-gray-900">
                 <td className="table-cell font-medium">{c.nombre}</td>
                 <td className="table-cell text-gray-500">{c.descripcion || '—'}</td>
                 <td className="table-cell">
                   <div className="flex gap-2">
-                    <button onClick={() => openEdit(c)} className="text-indigo-600 hover:underline text-sm">Editar</button>
+                    <button onClick={() => openEdit(c)} className="text-emerald-600 hover:underline text-sm">Editar</button>
                     <button onClick={() => handleDelete(c.id)} className="text-red-500 hover:underline text-sm">Eliminar</button>
                   </div>
                 </td>
@@ -73,15 +73,15 @@ export default function CategoriesPage() {
 
       {modal && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl shadow-xl w-full max-w-sm p-6">
+          <div className="bg-gray-800 rounded-2xl shadow-xl w-full max-w-sm p-6">
             <h2 className="text-lg font-bold mb-4">{modal === 'create' ? 'Nueva Categoría' : 'Editar Categoría'}</h2>
             <form onSubmit={handleSubmit} className="space-y-3">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Nombre *</label>
+                <label className="block text-sm font-medium text-gray-400 mb-1">Nombre *</label>
                 <input required className="input" value={form.nombre} onChange={(e) => setForm({ ...form, nombre: e.target.value })} />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Descripción</label>
+                <label className="block text-sm font-medium text-gray-400 mb-1">Descripción</label>
                 <input className="input" value={form.descripcion} onChange={(e) => setForm({ ...form, descripcion: e.target.value })} />
               </div>
               <div className="flex gap-3 pt-2">

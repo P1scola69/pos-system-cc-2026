@@ -32,11 +32,11 @@ export default function SalesPage() {
 
   return (
     <div className="space-y-4">
-      <h1 className="text-2xl font-bold text-gray-900">Historial de Ventas</h1>
+      <h1 className="text-2xl font-bold text-white">Historial de Ventas</h1>
 
       <div className="card p-0 overflow-hidden">
         <table className="w-full">
-          <thead className="bg-gray-50 border-b border-gray-200">
+          <thead className="bg-gray-900 border-b border-gray-200">
             <tr>
               <th className="table-header">N° Venta</th>
               <th className="table-header">Fecha</th>
@@ -56,7 +56,7 @@ export default function SalesPage() {
               <tr><td colSpan={8} className="table-cell text-center text-gray-400 py-8">Sin ventas registradas</td></tr>
             )}
             {sales.map((v) => (
-              <tr key={v.id} className="hover:bg-gray-50">
+              <tr key={v.id} className="hover:bg-gray-900">
                 <td className="table-cell font-mono text-gray-600">#{v.id}</td>
                 <td className="table-cell text-sm text-gray-500">
                   {new Date(v.created_at).toLocaleString('es-CL', { dateStyle: 'short', timeStyle: 'short' })}

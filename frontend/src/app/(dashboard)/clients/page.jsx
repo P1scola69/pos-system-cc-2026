@@ -48,7 +48,7 @@ export default function ClientsPage() {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-gray-900">Clientes</h1>
+        <h1 className="text-2xl font-bold text-white">Clientes</h1>
         <button onClick={openCreate} className="btn-primary">+ Nuevo cliente</button>
       </div>
 
@@ -64,7 +64,7 @@ export default function ClientsPage() {
 
       <div className="card p-0 overflow-hidden">
         <table className="w-full">
-          <thead className="bg-gray-50 border-b border-gray-200">
+          <thead className="bg-gray-900 border-b border-gray-200">
             <tr>
               <th className="table-header">RUT</th>
               <th className="table-header">Nombre</th>
@@ -78,14 +78,14 @@ export default function ClientsPage() {
               <tr><td colSpan={5} className="table-cell text-center text-gray-400 py-8">Sin clientes</td></tr>
             )}
             {clients.map((c) => (
-              <tr key={c.id} className="hover:bg-gray-50">
+              <tr key={c.id} className="hover:bg-gray-900">
                 <td className="table-cell font-mono text-sm">{c.rut}</td>
                 <td className="table-cell font-medium">{c.nombre}</td>
                 <td className="table-cell text-gray-500">{c.email || '—'}</td>
                 <td className="table-cell text-gray-500">{c.telefono || '—'}</td>
                 <td className="table-cell">
                   <div className="flex gap-2">
-                    <button onClick={() => openEdit(c)} className="text-indigo-600 hover:underline text-sm">Editar</button>
+                    <button onClick={() => openEdit(c)} className="text-emerald-600 hover:underline text-sm">Editar</button>
                     <button onClick={() => handleDelete(c.id)} className="text-red-500 hover:underline text-sm">Eliminar</button>
                   </div>
                 </td>
@@ -97,36 +97,36 @@ export default function ClientsPage() {
 
       {modal && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl shadow-xl w-full max-w-md p-6">
+          <div className="bg-gray-800 rounded-2xl shadow-xl w-full max-w-md p-6">
             <h2 className="text-lg font-bold mb-4">{modal === 'create' ? 'Nuevo Cliente' : 'Editar Cliente'}</h2>
             <form onSubmit={handleSubmit} className="space-y-3">
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">RUT * (ej: 12345678-9)</label>
+                  <label className="block text-sm font-medium text-gray-400 mb-1">RUT * (ej: 12345678-9)</label>
                   <input required className="input" placeholder="12345678-9"
                     value={form.rut}
                     disabled={modal !== 'create'}
                     onChange={(e) => setForm({ ...form, rut: e.target.value })} />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Nombre *</label>
+                  <label className="block text-sm font-medium text-gray-400 mb-1">Nombre *</label>
                   <input required className="input" value={form.nombre}
                     onChange={(e) => setForm({ ...form, nombre: e.target.value })} />
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                <label className="block text-sm font-medium text-gray-400 mb-1">Email</label>
                 <input type="email" className="input" value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })} />
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Teléfono</label>
+                  <label className="block text-sm font-medium text-gray-400 mb-1">Teléfono</label>
                   <input className="input" placeholder="+56912345678" value={form.telefono}
                     onChange={(e) => setForm({ ...form, telefono: e.target.value })} />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Dirección</label>
+                  <label className="block text-sm font-medium text-gray-400 mb-1">Dirección</label>
                   <input className="input" value={form.direccion}
                     onChange={(e) => setForm({ ...form, direccion: e.target.value })} />
                 </div>

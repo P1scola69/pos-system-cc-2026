@@ -47,13 +47,13 @@ export default function UsersPage() {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-gray-900">Usuarios</h1>
+        <h1 className="text-2xl font-bold text-white">Usuarios</h1>
         <button onClick={openCreate} className="btn-primary">+ Nuevo usuario</button>
       </div>
 
       <div className="card p-0 overflow-hidden">
         <table className="w-full">
-          <thead className="bg-gray-50 border-b border-gray-200">
+          <thead className="bg-gray-900 border-b border-gray-200">
             <tr>
               <th className="table-header">Nombre</th>
               <th className="table-header">Email</th>
@@ -67,11 +67,11 @@ export default function UsersPage() {
               <tr><td colSpan={5} className="table-cell text-center text-gray-400 py-8">Sin usuarios</td></tr>
             )}
             {users.map((u) => (
-              <tr key={u.id} className="hover:bg-gray-50">
+              <tr key={u.id} className="hover:bg-gray-900">
                 <td className="table-cell font-medium">{u.nombre}</td>
                 <td className="table-cell text-gray-500">{u.email}</td>
                 <td className="table-cell">
-                  <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${u.rol === 'admin' ? 'bg-indigo-100 text-indigo-700' : 'bg-gray-100 text-gray-600'}`}>
+                  <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${u.rol === 'admin' ? 'bg-emerald-100 text-emerald-700' : 'bg-gray-100 text-gray-600'}`}>
                     {u.rol}
                   </span>
                 </td>
@@ -82,7 +82,7 @@ export default function UsersPage() {
                 </td>
                 <td className="table-cell">
                   <div className="flex gap-2">
-                    <button onClick={() => openEdit(u)} className="text-indigo-600 hover:underline text-sm">Editar</button>
+                    <button onClick={() => openEdit(u)} className="text-emerald-600 hover:underline text-sm">Editar</button>
                     <button onClick={() => handleDelete(u.id)} className="text-red-500 hover:underline text-sm">Eliminar</button>
                   </div>
                 </td>
@@ -94,21 +94,21 @@ export default function UsersPage() {
 
       {modal && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl shadow-xl w-full max-w-sm p-6">
+          <div className="bg-gray-800 rounded-2xl shadow-xl w-full max-w-sm p-6">
             <h2 className="text-lg font-bold mb-4">{modal === 'create' ? 'Nuevo Usuario' : 'Editar Usuario'}</h2>
             <form onSubmit={handleSubmit} className="space-y-3">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Nombre *</label>
+                <label className="block text-sm font-medium text-gray-400 mb-1">Nombre *</label>
                 <input required className="input" value={form.nombre}
                   onChange={(e) => setForm({ ...form, nombre: e.target.value })} />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+                <label className="block text-sm font-medium text-gray-400 mb-1">Email *</label>
                 <input required type="email" className="input" value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })} />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-gray-400 mb-1">
                   Contraseña {modal !== 'create' && '(dejar vacío para no cambiar)'}
                 </label>
                 <input type="password" className="input" required={modal === 'create'}
@@ -116,7 +116,7 @@ export default function UsersPage() {
                   onChange={(e) => setForm({ ...form, password: e.target.value })} />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Rol</label>
+                <label className="block text-sm font-medium text-gray-400 mb-1">Rol</label>
                 <select className="input" value={form.rol_id}
                   onChange={(e) => setForm({ ...form, rol_id: e.target.value })}>
                   <option value="1">Administrador</option>

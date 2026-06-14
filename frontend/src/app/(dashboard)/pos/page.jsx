@@ -98,7 +98,7 @@ export default function POSPage() {
       {/* Panel izquierdo: productos */}
       <div className="flex-1 flex flex-col min-w-0">
         <div className="flex items-center gap-2 mb-4">
-          <h1 className="text-xl font-bold text-gray-900 mr-auto">Punto de Venta</h1>
+          <h1 className="text-xl font-bold text-white mr-auto">Punto de Venta</h1>
         </div>
 
         {/* Filtros */}
@@ -127,7 +127,7 @@ export default function POSPage() {
               key={p.id}
               onClick={() => addToCart(p)}
               disabled={p.stock === 0}
-              className="bg-white border border-gray-200 rounded-xl p-3 text-left hover:border-indigo-300 hover:shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              className="bg-gray-800 border border-gray-200 rounded-xl p-3 text-left hover:border-emerald-300 hover:shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <div className="w-full h-20 bg-gray-100 rounded-lg mb-2 overflow-hidden flex items-center justify-center">
                 {p.imagen_url
@@ -135,8 +135,8 @@ export default function POSPage() {
                   : <svg className="w-8 h-8 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
                 }
               </div>
-              <p className="text-xs font-semibold text-gray-900 truncate">{p.nombre}</p>
-              <p className="text-sm font-bold text-indigo-600 mt-0.5">{formatCLP(p.precio)}</p>
+              <p className="text-xs font-semibold text-white truncate">{p.nombre}</p>
+              <p className="text-sm font-bold text-emerald-600 mt-0.5">{formatCLP(p.precio)}</p>
               <p className={`text-xs mt-0.5 ${p.stock < 5 ? 'text-red-500' : 'text-gray-400'}`}>
                 Stock: {p.stock}
               </p>
@@ -149,9 +149,9 @@ export default function POSPage() {
       </div>
 
       {/* Panel derecho: carrito */}
-      <div className="w-80 flex flex-col bg-white rounded-xl border border-gray-200 shadow-sm">
+      <div className="w-80 flex flex-col bg-gray-800 rounded-xl border border-gray-200 shadow-sm">
         <div className="p-4 border-b border-gray-100">
-          <h2 className="font-semibold text-gray-900">Carrito</h2>
+          <h2 className="font-semibold text-white">Carrito</h2>
         </div>
 
         {/* Items */}
@@ -160,9 +160,9 @@ export default function POSPage() {
             <p className="text-center text-gray-400 text-sm py-8">Agrega productos al carrito</p>
           )}
           {cart.map((item) => (
-            <div key={item.producto_id} className="flex items-center gap-2 p-2 bg-gray-50 rounded-lg">
+            <div key={item.producto_id} className="flex items-center gap-2 p-2 bg-gray-900 rounded-lg">
               <div className="flex-1 min-w-0">
-                <p className="text-xs font-medium text-gray-800 truncate">{item.nombre}</p>
+                <p className="text-xs font-medium  truncate">{item.nombre}</p>
                 <p className="text-xs text-gray-500">{formatCLP(item.precio_unitario)} c/u</p>
               </div>
               <div className="flex items-center gap-1">
@@ -173,7 +173,7 @@ export default function POSPage() {
                   disabled={item.cantidad >= item.stock}
                   className="w-6 h-6 rounded bg-gray-200 hover:bg-gray-300 text-sm font-bold flex items-center justify-center disabled:opacity-40">+</button>
               </div>
-              <p className="text-xs font-bold text-gray-900 w-16 text-right">{formatCLP(item.subtotal)}</p>
+              <p className="text-xs font-bold text-white w-16 text-right">{formatCLP(item.subtotal)}</p>
               <button onClick={() => removeFromCart(item.producto_id)}
                 className="text-red-400 hover:text-red-600 ml-1">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
@@ -194,8 +194,8 @@ export default function POSPage() {
           </select>
 
           <div className="flex justify-between items-center">
-            <span className="font-semibold text-gray-700">Total</span>
-            <span className="text-xl font-bold text-indigo-600">{formatCLP(total)}</span>
+            <span className="font-semibold text-gray-400">Total</span>
+            <span className="text-xl font-bold text-emerald-600">{formatCLP(total)}</span>
           </div>
 
           {success && <p className="text-green-600 text-sm text-center">{success}</p>}
