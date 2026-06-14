@@ -75,7 +75,7 @@ resource "azurerm_service_plan" "pos_app_plan" {
   resource_group_name = azurerm_resource_group.pos_rg.name
   location            = azurerm_resource_group.pos_rg.location
   os_type             = "Linux"
-  sku_name            = "F1" # Capa F1 es 100% gratuita. (Si falla, la cambiamos a "B1")
+  sku_name            = "B2" 
 }
 
 # 11. App Service (El entorno donde correrá Node.js)
@@ -92,13 +92,22 @@ resource "azurerm_linux_web_app" "pos_backend" {
     }
   }
 
-  app_settings = {
+app_settings = {
     "DB_HOST"     = azurerm_postgresql_flexible_server.pos_db_server.fqdn
     "DB_USER"     = azurerm_postgresql_flexible_server.pos_db_server.administrator_login
     "DB_PASSWORD" = azurerm_postgresql_flexible_server.pos_db_server.administrator_password
     "DB_NAME"     = azurerm_postgresql_flexible_server_database.pos_db.name
+    "DB_PORT"     = "5432"
+    "DB_SSL"      = "true"
+    "NODE_ENV"    = "production"
+    "JWT_SECRET"  = "secreto_super_seguro_para_el_7"
+
+    "AZURE_STORAGE_CONNECTION_STRING" = azurerm_storage_account.pos_storage.primary_connection_string
+    "AZURE_STORAGE_CONTAINER_NAME"    = azurerm_storage_container.product_images.name
+    "AZURE_STORAGE_ACCOUNT_NAME"      = azurerm_storage_account.pos_storage.name
   }
 }
+
 # 12. Outputs (Información vital para conectarnos)
 output "database_host" {
   description = "La dirección del servidor PostgreSQL"
