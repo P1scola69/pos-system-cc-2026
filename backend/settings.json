@@ -1,0 +1,10 @@
+[
+  { "name": "DB_HOST", "value": "pos-db-server-eval2026.postgres.database.azure.com" },
+  { "name": "DB_PORT", "value": "5432" },
+  { "name": "DB_NAME", "value": "pos_db_prod" },
+  { "name": "DB_USER", "value": "posadmin" },
+  { "name": "DB_PASSWORD", "value": "#I2TdN5_w(AP}8e:" },
+  { "name": "DB_SSL", "value": "true" },
+  { "name": "NODE_ENV", "value": "production" },
+  { "name": "JWT_SECRET", "value": "secreto_super_seguro_para_el_7" }
+]

@@ -1,0 +1,35 @@
+# Dependencias
+node_modules/
+
+# Variables de entorno — NUNCA commitear archivos con secretos reales
+.env
+.env.local
+.env.production
+.env.*.local
+
+# Imágenes subidas localmente
+uploads/*
+!uploads/.gitkeep
+
+# Logs
+*.log
+npm-debug.log*
+
+# Build Next.js
+.next/
+out/
+
+# OS
+.DS_Store
+Thumbs.db
+
+.terraform/
+infraestructura/.terraform/
+*.tfstate
+*.tfstate.*
+.env.local
+.env.production
+.env.*.local
+node_modules/
+.next/
+out/
